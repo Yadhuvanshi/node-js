@@ -1,7 +1,15 @@
 let a=10;
 let b=0;
-setTimeout(()=>
+let waitingdata=new Promise((resolve,reject)=>
 {
-  b=20;
-},2000)
-console.log(a+b);
+  setTimeout(()=>
+  {
+    resolve(20)
+  },2000)
+
+})
+waitingdata.then((data)=>
+{
+  b=data;
+  console.log(a+b)
+})
