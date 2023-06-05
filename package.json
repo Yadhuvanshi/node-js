@@ -1,0 +1,24 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "description": "node-js tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "code step by step"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yadhuvanshi/nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yadhuvanshi/nodejs/issues"
+  },
+  "homepage": "https://github.com/Yadhuvanshi/nodejs#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "nodemon": "^2.0.22",
+    "simple-node-logger": "^21.8.12"
+  }
+}
