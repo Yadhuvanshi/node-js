@@ -1,15 +1,7 @@
-let a=10;
-let b=0;
-let waitingdata=new Promise((resolve,reject)=>
-{
-  setTimeout(()=>
-  {
-    resolve(20)
-  },2000)
+const express = require('express');
+const path = require('path');
+const app=express();
+const publicpath=path.join(__dirname,'public');
+app.use(express.static(publicpath));
+app.listen(5000);
 
-})
-waitingdata.then((data)=>
-{
-  b=data;
-  console.log(a+b)
-})
