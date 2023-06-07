@@ -1,21 +1,26 @@
 const express=require('express');
-const path=require('path');
-const publicpath=path.join(__dirname,'public');
 const app=express();
-app.set('view engine','ejs');
-app.get('/',(_,resp)=>{resp.sendFile(`${publicpath}/index.html`)});
-app.get('/about',(_,resp)=>{resp.sendFile(`${publicpath}/about.html`)});
-app.get('/profile',(_,resp)=>{const user=
+const reqFilter=(req,resp,next)=>{
+    if(!req.query.age)
     {
-        name:'anil sidhhu',
-        email:'unlink@gmail.com',
-        city:'noida',
-        skills:['php','java','python','c++']
+        resp.send("please provide age")
     }
-resp.render('profile',{user});});
-app.get('/login',(_,resp)=>{resp.render('login')});
-app.get('/help',(_,resp)=>{resp.sendFile(`${publicpath}/help.html`)});
-app.get('*',(_,resp)=>{resp.sendFile(`${publicpath}/helpcopy.html`)});
-app.listen(5000);
+    else if(req.query.age<18)
+    {
+        resp.send("no access granted as age is less than 18")
+    }
+    else
+    {
+        next();
+    }
+}
+app.use(reqFilter);
+app.get('/',(req,resp)=>{
+    resp.send("this is the home page")
+})
+app.get('/user',(req,resp)=>{
+    resp.send("this is the user page")
+})
+app.listen(5000)
 
 
